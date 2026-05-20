@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EnglishPro — Learn English</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD60A;
+    --yellow-light: #FFF8CC;
+    --orange: #FF7B2C;
+    --orange-light: #FFF0E6;
+    --blue: #3B82F6;
+    --blue-light: #EFF6FF;
+    --green: #22C55E;
+    --green-light: #F0FDF4;
+    --purple: #8B5CF6;
+    --purple-light: #F5F3FF;
+    --pink: #EC4899;
+    --pink-light: #FDF2F8;
+    --red: #EF4444;
+    --red-light: #FEF2F2;
+    --white: #FFFFFF;
+    --gray: #F9FAFB;
+    --dark: #1E293B;
+    --text: #334155;
+    --muted: #64748B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #F0F9FF;
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(59,130,246,0.10);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--blue);
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav-btn {
+    background: none; border: none; padding: 6px 14px;
+    border-radius: 20px; font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem; font-weight: 700; cursor: pointer;
+    color: var(--muted); transition: all 0.2s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--blue); color: #fff; }
+  .nav-quiz-btn {
+    background: var(--orange); color: #fff; border: none;
+    padding: 8px 18px; border-radius: 20px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+  }
+  .nav-quiz-btn:hover { background: #e06920; transform: scale(1.05); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HOME */
+  .hero {
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    color: #fff; text-align: center;
+    padding: 70px 2rem 90px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.07); border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -60px;
+    width: 200px; height: 200px;
+    background: rgba(255,214,10,0.15); border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: #fff; padding: 5px 16px;
+    border-radius: 20px; font-size: 0.85rem;
+    font-weight: 700; margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800; margin-bottom: 14px; line-height: 1.2;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 540px; margin: 0 auto 32px; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--yellow); color: var(--dark);
+    border: none; padding: 13px 28px; border-radius: 30px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,214,10,0.4); }
+  .btn-outline-white {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.6);
+    color: #fff; padding: 11px 28px; border-radius: 30px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.25); }
+
+  /* MATERIAL CARDS */
+  .section-title {
+    text-align: center; padding: 60px 2rem 32px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .section-title h2 { font-size: 2rem; font-weight: 800; color: var(--dark); }
+  .section-title p { color: var(--muted); margin-top: 8px; font-size: 1.05rem; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px; padding: 0 clamp(1rem, 5vw, 4rem) 60px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .mat-card {
+    background: #fff; border-radius: 20px;
+    padding: 28px 24px; cursor: pointer;
+    transition: all 0.3s; position: relative; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 2.5px solid transparent;
+  }
+  .mat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .mat-card.c1 { border-color: var(--blue); }
+  .mat-card.c1:hover { border-color: var(--blue); }
+  .mat-card.c2 { border-color: var(--green); }
+  .mat-card.c3 { border-color: var(--purple); }
+  .mat-card.c4 { border-color: var(--orange); }
+  .mat-card.c5 { border-color: var(--pink); }
+  .mat-icon {
+    width: 60px; height: 60px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; margin-bottom: 16px;
+  }
+  .c1 .mat-icon { background: var(--blue-light); }
+  .c2 .mat-icon { background: var(--green-light); }
+  .c3 .mat-icon { background: var(--purple-light); }
+  .c4 .mat-icon { background: var(--orange-light); }
+  .c5 .mat-icon { background: var(--pink-light); }
+  .mat-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .mat-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+  .mat-card .mat-tag {
+    display: inline-block; margin-top: 14px;
+    padding: 4px 12px; border-radius: 12px;
+    font-size: 0.78rem; font-weight: 700;
+  }
+  .c1 .mat-tag { background: var(--blue-light); color: var(--blue); }
+  .c2 .mat-tag { background: var(--green-light); color: #16a34a; }
+  .c3 .mat-tag { background: var(--purple-light); color: var(--purple); }
+  .c4 .mat-tag { background: var(--orange-light); color: var(--orange); }
+  .c5 .mat-tag { background: var(--pink-light); color: var(--pink); }
+  .mat-arrow {
+    position: absolute; bottom: 20px; right: 20px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .c1 .mat-arrow { background: var(--blue); color: #fff; }
+  .c2 .mat-arrow { background: var(--green); color: #fff; }
+  .c3 .mat-arrow { background: var(--purple); color: #fff; }
+  .c4 .mat-arrow { background: var(--orange); color: #fff; }
+  .c5 .mat-arrow { background: var(--pink); color: #fff; }
+
+  /* QUIZ CARD HOME */
+  .quiz-cta {
+    background: linear-gradient(135deg, #FF7B2C, #FFD60A);
+    border-radius: 24px; padding: 40px 36px;
+    max-width: 1100px; margin: 0 auto clamp(3rem,6vw,5rem);
+    transform: translateX(70px);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px; margin-left: clamp(1rem,5vw,4rem); margin-right: clamp(1rem,5vw,4rem);
+  }
+  .quiz-cta h2 { font-family: 'Poppins',sans-serif; font-size: 1.7rem; font-weight: 800; color: #fff; }
+  .quiz-cta p { color: rgba(255,255,255,0.9); margin-top: 6px; font-size: 1rem; }
+  .quiz-cta-emoji { font-size: 4rem; }
+  .btn-white {
+    background: #fff; color: var(--orange); border: none;
+    padding: 13px 28px; border-radius: 30px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+  /* MATERIAL PAGE */
+  .mat-page-header {
+    padding: 40px clamp(1rem,5vw,4rem) 0;
+    max-width: 900px; margin: 0 auto;
+  }
+  .back-btn {
+    background: none; border: 2px solid var(--blue);
+    color: var(--blue); padding: 8px 18px; border-radius: 20px;
+    font-family: 'Nunito', sans-serif; font-weight: 700;
+    font-size: 0.9rem; cursor: pointer; margin-bottom: 24px;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { background: var(--blue); color: #fff; }
+  .mat-page-title {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 12px;
+  }
+  .mat-page-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+  }
+  .mat-page-title h1 {
+    font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2rem;
+  }
+  .mat-page-desc { color: var(--muted); font-size: 1rem; margin-bottom: 36px; line-height: 1.7; }
+  .mat-content { max-width: 900px; margin: 0 auto; padding: 0 clamp(1rem,5vw,4rem) 60px; }
+
+  /* CONTENT SECTIONS */
+  .content-block {
+    background: #fff; border-radius: 20px; padding: 28px 28px;
+    margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--blue);
+  }
+  .content-block.green { border-left-color: var(--green); }
+  .content-block.purple { border-left-color: var(--purple); }
+  .content-block.orange { border-left-color: var(--orange); }
+  .content-block.pink { border-left-color: var(--pink); }
+  .content-block.yellow { border-left-color: var(--yellow); }
+  .content-block.red { border-left-color: var(--red); }
+  .content-block h2 {
+    font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .content-block p { color: var(--text); line-height: 1.8; font-size: 0.97rem; margin-bottom: 10px; }
+  .content-block ul { padding-left: 20px; color: var(--text); line-height: 1.9; font-size: 0.97rem; }
+  .content-block li { margin-bottom: 6px; }
+
+  .example-box {
+    background: #F0F9FF; border-radius: 12px; padding: 14px 18px;
+    margin: 14px 0; border: 1.5px solid #BFDBFE;
+  }
+  .example-box.green { background: var(--green-light); border-color: #86EFAC; }
+  .example-box.purple { background: var(--purple-light); border-color: #C4B5FD; }
+  .example-box.orange { background: var(--orange-light); border-color: #FDBA74; }
+  .example-box.pink { background: var(--pink-light); border-color: #F9A8D4; }
+  .example-box p { color: var(--dark); font-size: 0.93rem; margin: 0; }
+  .example-box strong { color: var(--blue); }
+  .example-box.green strong { color: #16a34a; }
+  .example-box.purple strong { color: var(--purple); }
+  .example-box.orange strong { color: var(--orange); }
+  .example-box.pink strong { color: var(--pink); }
+
+  .tense-table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 0.88rem; border-radius: 12px; overflow: hidden;
+  }
+  .tense-table th {
+    background: var(--blue); color: #fff;
+    padding: 10px 14px; text-align: left; font-weight: 700;
+  }
+  .tense-table td { padding: 9px 14px; border-bottom: 1px solid #E2E8F0; color: var(--text); }
+  .tense-table tr:last-child td { border-bottom: none; }
+  .tense-table tr:nth-child(even) td { background: #F8FAFC; }
+  .tense-table.green th { background: var(--green); }
+  .tense-table.purple th { background: var(--purple); }
+  .tense-table.orange th { background: var(--orange); }
+  .tense-table.pink th { background: var(--pink); }
+
+  .highlight { 
+    background: var(--yellow-light); padding: 2px 6px; border-radius: 5px; 
+    font-weight: 700; color: #92400E;
+  }
+  .highlight.green { background: var(--green-light); color: #166534; }
+  .highlight.purple { background: var(--purple-light); color: #5B21B6; }
+  .highlight.red { background: var(--red-light); color: #991B1B; }
+
+  .info-strip {
+    background: var(--yellow-light); border-radius: 12px;
+    padding: 14px 18px; margin: 14px 0;
+    border: 1.5px solid #FCD34D;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .info-strip.blue { background: var(--blue-light); border-color: #93C5FD; }
+  .info-strip.green { background: var(--green-light); border-color: #86EFAC; }
+  .info-strip p { color: var(--dark); font-size: 0.92rem; margin: 0; }
+
+  /* TOPIC NAV */
+  .topic-nav {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .topic-pill {
+    padding: 7px 16px; border-radius: 20px; border: 2px solid #E2E8F0;
+    font-size: 0.85rem; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; color: var(--muted); background: #fff;
+  }
+  .topic-pill.active, .topic-pill:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+  /* QUIZ PAGE */
+  .quiz-container { max-width: 800px; margin: 0 auto; padding: 40px clamp(1rem,5vw,2rem) 60px; }
+  .quiz-header { text-align: center; margin-bottom: 40px; }
+  .quiz-header h1 { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; }
+  .quiz-header p { color: var(--muted); margin-top: 8px; }
+  .quiz-meta {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 20px 0;
+  }
+  .quiz-meta-item {
+    background: #fff; border-radius: 12px; padding: 10px 20px;
+    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    min-width: 90px;
+  }
+  .quiz-meta-item .num { font-size: 1.4rem; font-weight: 800; color: var(--blue); }
+  .quiz-meta-item .lbl { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+  .progress-bar-wrap {
+    background: #E2E8F0; border-radius: 10px; height: 10px; margin: 24px 0;
+  }
+  .progress-bar-fill {
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+    height: 100%; border-radius: 10px; transition: width 0.4s ease;
+  }
+  .question-card {
+    background: #fff; border-radius: 20px; padding: 32px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07); margin-bottom: 20px;
+  }
+  .question-meta {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  }
+  .q-badge {
+    padding: 3px 12px; border-radius: 12px; font-size: 0.78rem;
+    font-weight: 800; letter-spacing: 0.5px;
+  }
+  .q-num { font-size: 0.85rem; color: var(--muted); font-weight: 700; }
+  .question-text {
+    font-size: 1.05rem; font-weight: 700; color: var(--dark);
+    line-height: 1.6; margin-bottom: 22px;
+  }
+  .options-grid { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    background: #F8FAFC; border: 2px solid #E2E8F0;
+    border-radius: 14px; padding: 12px 18px; text-align: left;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; color: var(--dark);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .option-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+  .option-btn.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+  .option-btn.correct { border-color: var(--green); background: var(--green-light); color: #166534; pointer-events: none; }
+  .option-btn.wrong { border-color: var(--red); background: var(--red-light); color: #991B1B; pointer-events: none; }
+  .option-btn.disabled { pointer-events: none; opacity: 0.7; }
+  .option-letter {
+    width: 28px; height: 28px; border-radius: 8px; background: #E2E8F0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; font-weight: 800; flex-shrink: 0;
+  }
+  .option-btn.selected .option-letter { background: var(--blue); color: #fff; }
+  .option-btn.correct .option-letter { background: var(--green); color: #fff; }
+  .option-btn.wrong .option-letter { background: var(--red); color: #fff; }
+  .answer-feedback {
+    background: var(--green-light); border: 1.5px solid #86EFAC;
+    border-radius: 12px; padding: 12px 16px; margin-top: 14px;
+    font-size: 0.9rem; color: #166534; font-weight: 600; display: none;
+  }
+  .answer-feedback.wrong { background: var(--red-light); border-color: #FCA5A5; color: #991B1B; }
+  .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+  .btn-quiz-nav {
+    background: var(--blue); color: #fff; border: none;
+    padding: 12px 28px; border-radius: 20px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 0.95rem; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-quiz-nav:hover { background: #2563EB; transform: translateY(-1px); }
+  .btn-quiz-nav:disabled { background: #CBD5E1; cursor: not-allowed; transform: none; }
+  .btn-quiz-nav.orange { background: var(--orange); }
+  .btn-quiz-nav.orange:hover { background: #e06920; }
+
+  /* RESULT */
+  .result-card {
+    background: #fff; border-radius: 24px; padding: 48px 36px;
+    text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  }
+  .score-circle {
+    width: 140px; height: 140px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 24px; font-family: 'Poppins', sans-serif;
+    border: 6px solid var(--blue);
+  }
+  .score-circle .score-num { font-size: 2.5rem; font-weight: 800; color: var(--blue); }
+  .score-circle .score-lbl { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+  .result-card h2 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
+  .result-card p { color: var(--muted); font-size: 1rem; margin-bottom: 28px; }
+  .result-breakdown {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px; margin: 24px 0;
+  }
+  .breakdown-item {
+    background: var(--gray); border-radius: 14px; padding: 14px 10px; text-align: center;
+  }
+  .breakdown-item .bi-num { font-size: 1.4rem; font-weight: 800; }
+  .breakdown-item .bi-lbl { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-top: 3px; }
+  .result-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+
+  /* PROGRESS DOTS */
+  .q-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 16px; }
+  .q-dot {
+    width: 10px; height: 10px; border-radius: 3px;
+    background: #E2E8F0; cursor: pointer; transition: all 0.2s;
+  }
+  .q-dot.answered { background: var(--blue); }
+  .q-dot.correct-dot { background: var(--green); }
+  .q-dot.wrong-dot { background: var(--red); }
+  .q-dot.current { outline: 2px solid var(--orange); outline-offset: 1px; }
+
+  /* TOPIC TABS in quiz */
+  .topic-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .topic-tab {
+    padding: 6px 14px; border-radius: 16px; font-size: 0.8rem; font-weight: 700;
+    cursor: pointer; border: 2px solid #E2E8F0; background: #fff; color: var(--muted);
+    transition: all 0.2s;
+  }
+  .topic-tab.active, .topic-tab:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+
+  @media (max-width: 640px) {
+    .quiz-cta { flex-direction: column; text-align: center; transform:translateX(0px) }
+    .nav-links { display: none; }
+    .mat-page-title h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="goHome()">🎓 English<span>Pro</span></div>
+  <div class="nav-links">
+    <button class="nav-btn" onclick="showMaterial(0)">Grammar Tense</button>
+    <button class="nav-btn" onclick="showMaterial(1)">Conditional</button>
+    <button class="nav-btn" onclick="showMaterial(2)">Error Recognition</button>
+    <button class="nav-btn" onclick="showMaterial(3)">Relative Pronoun</button>
+    <button class="nav-btn" onclick="showMaterial(4)">Subject-Verb Agr.</button>
+  </div>
+  <button class="nav-quiz-btn" onclick="startQuiz()">📝 Quiz 50 Questions</button>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-badge">✨ English Learning Platform</div>
+    <h1>Master <span>English</span><br>with a Fun Learning Experience!</h1>
+    <p>5 complete lessons + 50 interactive quiz questions. Learn grammar, tenses, and much more!</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showMaterial(0)">🚀 Start Learning</button>
+      <button class="btn-outline-white" onclick="startQuiz()">📝 Quiz Now</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>📚 Learning Materials</h2>
+    <p>Select the lessons you want to study. Presented with simple, easy-to-understand examples!</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="mat-card c1" onclick="showMaterial(0)">
+      <div class="mat-icon">⏰</div>
+      <h3>Grammar Tense</h3>
+      <p>Learn all 16 English tenses with formula charts and example sentences.</p>
+      <span class="mat-tag">16 Tenses</span>
+      <div class="mat-arrow">→</div>
+    </div>
+    <div class="mat-card c2" onclick="showMaterial(1)">
+      <div class="mat-icon">🔀</div>
+      <h3>Conditional Tense</h3>
+      <p>Conditional sentences types 0, 1, 2, 3, and mixed conditional with usage examples.</p>
+      <span class="mat-tag">5 Types</span>
+      <div class="mat-arrow">→</div>
+    </div>
+    <div class="mat-card c3" onclick="showMaterial(2)">
+      <div class="mat-icon">🔍</div>
+      <h3>Error Recognition</h3>
+      <p>Techniques for finding and correcting errors in English sentences.</p>
+      <span class="mat-tag">6 Kategori Error</span>
+      <div class="mat-arrow">→</div>
+    </div>
+    <div class="mat-card c4" onclick="showMaterial(3)">
+      <div class="mat-icon">🔗</div>
+      <h3>Relative Pronoun</h3>
+      <p>Usage of who, whom, whose, which, and that in relative clauses.</p>
+      <span class="mat-tag">5 Pronouns</span>
+      <div class="mat-arrow">→</div>
+    </div>
+    <div class="mat-card c5" onclick="showMaterial(4)">
+      <div class="mat-icon">⚖️</div>
+      <h3>Subject-Verb Agreement</h3>
+      <p>The rules for matching the subject and verb in a sentence.</p>
+      <span class="mat-tag">10 Rules</span>
+      <div class="mat-arrow">→</div>
+    </div>
+  </div>
+
+  <div class="quiz-cta">
+    <div>
+      <h2>🧠 Ready to be Tested?</h2>
+      <p>50 questions from all lessons — test your English skills now!</p>
+    </div>
+    <div class="quiz-cta-emoji">🏆</div>
+    <button class="btn-white" onclick="startQuiz()">Start Quiz Now →</button>
+  </div>
+</div>
+
+<!-- ===== MATERIAL 1: GRAMMAR TENSE ===== -->
+<div id="page-mat-0" class="page">
+  <div class="mat-page-header">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="mat-page-title">
+      <div class="mat-page-icon" style="background:var(--blue-light)">⏰</div>
+      <h1 style="color:var(--blue)">Grammar Tense</h1>
+    </div>
+    <p class="mat-page-desc">A tense is a verb form that indicates when an event happens. In English, there are 16 tenses divided by time (past, present, future) and aspect (simple, continuous, perfect, perfect continuous).</p>
+  </div>
+  <div class="mat-content">
+    <div class="content-block">
+      <h2>⏱ Present Tenses</h2>
+      <table class="tense-table">
+        <tr><th>Tense</th><th>Formula</th><th>Example</th></tr>
+        <tr><td><strong>Simple Present</strong></td><td>S + V1 (s/es)</td><td>She <span class="highlight">reads</span> every day.</td></tr>
+        <tr><td><strong>Present Continuous</strong></td><td>S + is/am/are + V-ing</td><td>They <span class="highlight">are studying</span> now.</td></tr>
+        <tr><td><strong>Present Perfect</strong></td><td>S + has/have + V3</td><td>I <span class="highlight">have finished</span> my homework.</td></tr>
+        <tr><td><strong>Present Perfect Continuous</strong></td><td>S + has/have been + V-ing</td><td>He <span class="highlight">has been working</span> for 3 hours.</td></tr>
+      </table>
+      <div class="info-strip blue"><span>💡</span><p>Simple Present is used for habits, general truths, and schedules. Keywords: <strong>always, usually, often, every day.</strong></p></div>
+    </div>
+
+    <div class="content-block green">
+      <h2>🕰 Past Tenses</h2>
+      <table class="tense-table green">
+        <tr><th>Tense</th><th>Rumus</th><th>Contoh</th></tr>
+        <tr><td><strong>Simple Past</strong></td><td>S + V2</td><td>She <span class="highlight green">visited</span> Bali last year.</td></tr>
+        <tr><td><strong>Past Continuous</strong></td><td>S + was/were + V-ing</td><td>We <span class="highlight green">were eating</span> when he called.</td></tr>
+        <tr><td><strong>Past Perfect</strong></td><td>S + had + V3</td><td>She <span class="highlight green">had left</span> before I arrived.</td></tr>
+        <tr><td><strong>Past Perfect Continuous</strong></td><td>S + had been + V-ing</td><td>He <span class="highlight green">had been waiting</span> for hours.</td></tr>
+      </table>
+      <div class="info-strip green"><span>💡</span><p>Past Perfect is used to show an event completed before another past event. Keywords: <strong>before, after, when, already, by the time.</strong></p></div>
+    </div>
+
+    <div class="content-block purple">
+      <h2>🔮 Future Tenses</h2>
+      <table class="tense-table purple">
+        <tr><th>Tense</th><th>Rumus</th><th>Contoh</th></tr>
+        <tr><td><strong>Simple Future</strong></td><td>S + will + V1</td><td>I <span class="highlight purple">will call</span> you tomorrow.</td></tr>
+        <tr><td><strong>Future Continuous</strong></td><td>S + will be + V-ing</td><td>She <span class="highlight purple">will be studying</span> at 7 PM.</td></tr>
+        <tr><td><strong>Future Perfect</strong></td><td>S + will have + V3</td><td>They <span class="highlight purple">will have finished</span> by noon.</td></tr>
+        <tr><td><strong>Future Perfect Continuous</strong></td><td>S + will have been + V-ing</td><td>He <span class="highlight purple">will have been working</span> for 5 years.</td></tr>
+      </table>
+    </div>
+
+    <div class="content-block orange">
+      <h2>🎯 Tips Memilih Tense yang Tepat</h2>
+      <ul>
+        <li>Perhatikan <strong>kata kunci waktu</strong> seperti: yesterday, ago, last → Simple Past</li>
+        <li>Kata kunci: now, at this moment, currently → Present Continuous</li>
+        <li>Kata kunci: since, for → Present/Past Perfect atau Perfect Continuous</li>
+        <li>Kata kunci: tomorrow, next week, in the future → Future tenses</li>
+        <li>Dua kejadian di masa lalu → kejadian lebih dulu pakai Past Perfect, yang belakangan pakai Simple Past</li>
+      </ul>
+      <div class="example-box orange">
+        <p>✅ When I <strong>arrived</strong> (Simple Past), she <strong>had already left</strong> (Past Perfect).</p>
+        <p>✅ I <strong>have been living</strong> here since 2010. (Present Perfect Continuous)</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-primary" onclick="startQuiz()">📝 Practice Tense Questions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MATERIAL 2: CONDITIONAL TENSE ===== -->
+<div id="page-mat-1" class="page">
+  <div class="mat-page-header">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="mat-page-title">
+      <div class="mat-page-icon" style="background:var(--green-light)">🔀</div>
+      <h1 style="color:#16a34a">Conditional Tense</h1>
+    </div>
+    <p class="mat-page-desc">Conditional sentences are used to talk about situations that may or may not happen. There are 5 types of conditionals in English.</p>
+  </div>
+  <div class="mat-content">
+    <div class="content-block green">
+      <h2>📗 Type 0 — Zero Conditional</h2>
+      <p><strong>Use:</strong> General truths, natural laws, something always true.</p>
+      <p><strong>Rumus:</strong> If + Simple Present, Simple Present</p>
+      <div class="example-box green">
+        <p>✅ If you <strong>heat</strong> water to 100°C, it <strong>boils</strong>.</p>
+        <p>✅ If it <strong>rains</strong>, the ground <strong>gets</strong> wet.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>📘 Type 1 — First Conditional</h2>
+      <p><strong>Use:</strong> A condition that may happen in the future (real condition).</p>
+      <p><strong>Rumus:</strong> If + Simple Present, will + V1</p>
+      <div class="example-box">
+        <p>✅ If it <strong>rains</strong> tomorrow, I <strong>will stay</strong> at home.</p>
+        <p>✅ If she <strong>studies</strong> hard, she <strong>will pass</strong> the exam.</p>
+      </div>
+      <div class="info-strip blue"><span>💡</span><p>You can use <strong>unless</strong> instead of "if not": Unless you hurry, you will miss the bus.</p></div>
+    </div>
+
+    <div class="content-block purple">
+      <h2>📙 Type 2 — Second Conditional</h2>
+      <p><strong>Use:</strong> An unreal or hypothetical condition in the present or future.</p>
+      <p><strong>Rumus:</strong> If + Simple Past, would/could/might + V1</p>
+      <div class="example-box purple">
+        <p>✅ If I <strong>were</strong> rich, I <strong>would travel</strong> the world.</p>
+        <p>✅ If she <strong>knew</strong> the answer, she <strong>would tell</strong> us.</p>
+      </div>
+      <div class="info-strip"><span>⚠️</span><p>In Second Conditional, subjects I/he/she/it use <strong>were</strong> (not was) in formal English.</p></div>
+    </div>
+
+    <div class="content-block orange">
+      <h2>📕 Type 3 — Third Conditional</h2>
+      <p><strong>Use:</strong> An unreal past condition (regret or past hypothetical).</p>
+      <p><strong>Rumus:</strong> If + Past Perfect, would/could/might + have + V3</p>
+      <div class="example-box orange">
+        <p>✅ If I <strong>had studied</strong> harder, I <strong>would have passed</strong>.</p>
+        <p>✅ If she <strong>had taken</strong> the medicine, she <strong>would have recovered</strong>.</p>
+      </div>
+    </div>
+
+    <div class="content-block pink">
+      <h2>🔀 Mixed Conditional</h2>
+      <p><strong>Use:</strong> Combines a past condition with a present result, or the other way around.</p>
+      <p><strong>Rumus A (Past → Present):</strong> If + Past Perfect, would + V1</p>
+      <p><strong>Rumus B (Present → Past):</strong> If + Simple Past, would + have + V3</p>
+      <div class="example-box pink">
+        <p>✅ If I <strong>had studied</strong> medicine (past), I <strong>would be</strong> a doctor now (present).</p>
+        <p>✅ If she <strong>were</strong> more careful (present), she <strong>wouldn't have made</strong> that mistake (past).</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>📊 Comparison Summary</h2>
+      <table class="tense-table">
+        <tr><th>Type</th><th>If-clause</th><th>Main Clause</th><th>Makna</th></tr>
+        <tr><td>Type 0</td><td>Simple Present</td><td>Simple Present</td><td>General truth</td></tr>
+        <tr><td>Type 1</td><td>Simple Present</td><td>will + V1</td><td>Possible future</td></tr>
+        <tr><td>Type 2</td><td>Simple Past</td><td>would + V1</td><td>Unreal present</td></tr>
+        <tr><td>Type 3</td><td>Past Perfect</td><td>would have + V3</td><td>Unreal past</td></tr>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-primary" onclick="startQuiz()">📝 Practice Conditional Questions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MATERIAL 3: ERROR RECOGNITION ===== -->
+<div id="page-mat-2" class="page">
+  <div class="mat-page-header">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="mat-page-title">
+      <div class="mat-page-icon" style="background:var(--purple-light)">🔍</div>
+      <h1 style="color:var(--purple)">Error Recognition</h1>
+    </div>
+    <p class="mat-page-desc">Error Recognition is the skill of finding and identifying grammar mistakes in a sentence. Questions usually show an underlined part, and you must choose the incorrect section.</p>
+  </div>
+  <div class="mat-content">
+
+    <div class="content-block purple">
+      <h2>🔴 Tipe Error 1: Wrong Verb Form</h2>
+      <p>Errors in choosing the correct verb form (V1, V2, V3, V-ing).</p>
+      <div class="example-box purple">
+        <p>❌ She has <u>went</u> to the market. → ✅ She has <strong>gone</strong> to the market.</p>
+        <p>❌ He was <u>study</u> when I called. → ✅ He was <strong>studying</strong> when I called.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>🔴 Tipe Error 2: Wrong Tense</h2>
+      <p>Using the wrong tense for the time context in the sentence.</p>
+      <div class="example-box">
+        <p>❌ I <u>have seen</u> her yesterday. → ✅ I <strong>saw</strong> her yesterday.</p>
+        <p>❌ She <u>was</u> studying when the phone <u>had rung</u>. → ✅ ...the phone <strong>rang</strong>.</p>
+      </div>
+    </div>
+
+    <div class="content-block orange">
+      <h2>🔴 Tipe Error 3: Wrong Pronoun</h2>
+      <p>Incorrect pronoun choice (subject, object, possessive).</p>
+      <div class="example-box orange">
+        <p>❌ Between you and <u>I</u>, this is wrong. → ✅ Between you and <strong>me</strong> (object).</p>
+        <p>❌ <u>Him</u> and I went to school. → ✅ <strong>He</strong> and I went to school (subject).</p>
+      </div>
+    </div>
+
+    <div class="content-block green">
+      <h2>🔴 Tipe Error 4: Wrong Article (a/an/the)</h2>
+      <p>Incorrect or inappropriate use of articles (a/an/the).</p>
+      <div class="example-box green">
+        <p>❌ She is <u>an</u> university student. → ✅ She is <strong>a</strong> university student ("u" bersuara /j/).</p>
+        <p>❌ He plays <u>the</u> football every day. → ✅ He plays <strong>—</strong> football (olahraga tidak pakai "the").</p>
+      </div>
+    </div>
+
+    <div class="content-block pink">
+      <h2>🔴 Tipe Error 5: Wrong Preposition</h2>
+      <p>Incorrect preposition use after a verb, adjective, or certain nouns.</p>
+      <div class="example-box pink">
+        <p>❌ She is good <u>in</u> English. → ✅ She is good <strong>at</strong> English.</p>
+        <p>❌ He is interested <u>about</u> music. → ✅ He is interested <strong>in</strong> music.</p>
+        <p>❌ I arrived <u>to</u> Jakarta at noon. → ✅ I arrived <strong>in</strong> Jakarta at noon.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>🔴 Tipe Error 6: Double Negative & Redundancy</h2>
+      <p>Sentences with double negatives or unnecessary redundancy.</p>
+      <div class="example-box">
+        <p>❌ I don't know <u>nothing</u>. → ✅ I don't know <strong>anything</strong>.</p>
+        <p>❌ She returned <u>back</u> home. → ✅ She <strong>returned</strong> home ("return" already means to go back).</p>
+        <p>❌ He is more <u>cleverer</u> than me. → ✅ He is <strong>cleverer</strong> than me.</p>
+      </div>
+    </div>
+
+    <div class="content-block orange">
+      <h2>🎯 Error Recognition Strategy</h2>
+      <ul>
+        <li>Read the whole sentence first to understand the context</li>
+        <li>Check each underlined part one by one</li>
+        <li>Check: is the verb form correct? Is the tense right?</li>
+        <li>Check: are the article, preposition, and pronoun correct?</li>
+        <li>Avoid getting trapped by choices that "sound" right but are grammatically wrong</li>
+        <li>If unsure, eliminate the clearly correct options</li>
+      </ul>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-primary" onclick="startQuiz()">📝 Practice Error Recognition Questions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MATERIAL 4: RELATIVE PRONOUN ===== -->
+<div id="page-mat-3" class="page">
+  <div class="mat-page-header">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="mat-page-title">
+      <div class="mat-page-icon" style="background:var(--orange-light)">🔗</div>
+      <h1 style="color:var(--orange)">Relative Pronoun</h1>
+    </div>
+    <p class="mat-page-desc">Relative Pronouns are used to connect a relative clause to the noun it describes. A relative clause gives extra information about that noun.</p>
+  </div>
+  <div class="mat-content">
+
+    <div class="content-block orange">
+      <h2>👤 WHO — for a person (as subject)</h2>
+      <p><strong>Used for:</strong> Replacing a person as the subject.</p>
+      <div class="example-box orange">
+        <p>✅ The teacher <strong>who</strong> taught us English was very kind.</p>
+        <p>✅ The girl <strong>who</strong> sits next to me is my best friend.</p>
+        <p>💡 "Who" replaces: he/she/they (as subject)</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>👤 WHOM — for a person (as object)</h2>
+      <p><strong>Used for:</strong> Replacing a person as the object (more formal).</p>
+      <div class="example-box">
+        <p>✅ The man <strong>whom</strong> I met yesterday is a doctor.</p>
+        <p>✅ She is the person to <strong>whom</strong> I wrote the letter.</p>
+        <p>💡 "Whom" replaces: him/her/them (as object)</p>
+      </div>
+      <div class="info-strip blue"><span>💡</span><p>Trick: If you can replace it with "him/her" → use <strong>whom</strong>. If you can replace it with "he/she" → use <strong>who</strong>.</p></div>
+    </div>
+
+    <div class="content-block green">
+      <h2>🏠 WHOSE — possession</h2>
+      <p><strong>Used for:</strong> Showing possession (person or thing).</p>
+      <div class="example-box green">
+        <p>✅ The student <strong>whose</strong> book was stolen cried.</p>
+        <p>✅ I know a man <strong>whose</strong> wife is a famous singer.</p>
+        <p>✅ The house <strong>whose</strong> roof is red belongs to my uncle.</p>
+        <p>💡 "Whose" = his/her/their/its</p>
+      </div>
+    </div>
+
+    <div class="content-block purple">
+      <h2>🐾 WHICH — for things/animals</h2>
+      <p><strong>Used for:</strong> Replacing non-human nouns (things, animals, ideas).</p>
+      <div class="example-box purple">
+        <p>✅ The book <strong>which</strong> I bought yesterday is interesting.</p>
+        <p>✅ The car <strong>which</strong> broke down has been repaired.</p>
+        <p>✅ This is the movie <strong>which</strong> won many awards.</p>
+      </div>
+    </div>
+
+    <div class="content-block pink">
+      <h2>🎯 THAT — for a person or thing</h2>
+      <p><strong>Used for:</strong> Replacing who or which in a defining relative clause (no commas).</p>
+      <div class="example-box pink">
+        <p>✅ The man <strong>that</strong> I saw was wearing a red jacket.</p>
+        <p>✅ The book <strong>that</strong> she gave me was amazing.</p>
+        <p>✅ The only thing <strong>that</strong> matters is your happiness.</p>
+      </div>
+      <div class="info-strip"><span>⚠️</span><p><strong>That CANNOT be used</strong> in a non-defining relative clause (sentence with commas) or after a preposition.</p></div>
+    </div>
+
+    <div class="content-block">
+      <h2>📊 Relative Pronoun Comparison Table</h2>
+      <table class="tense-table">
+        <tr><th>Pronoun</th><th>Antecedent</th><th>Function</th><th>Example</th></tr>
+        <tr><td><strong>Who</strong></td><td>Person</td><td>Subject</td><td>The man who called</td></tr>
+        <tr><td><strong>Whom</strong></td><td>Person</td><td>Object</td><td>The man whom I met</td></tr>
+        <tr><td><strong>Whose</strong></td><td>Person/Thing</td><td>Possession</td><td>The girl whose bag</td></tr>
+        <tr><td><strong>Which</strong></td><td>Thing/Animal</td><td>Subject/Object</td><td>The car which crashed</td></tr>
+        <tr><td><strong>That</strong></td><td>Person/Thing</td><td>Subject/Object</td><td>The book that I read</td></tr>
+      </table>
+    </div>
+
+    <div class="content-block orange">
+      <h2>🔵 Defining vs Non-Defining Relative Clause</h2>
+      <ul>
+        <li><strong>Defining (no commas):</strong> Essential information to identify the noun. Can use that/who/which.</li>
+        <li><strong>Non-defining (with commas):</strong> Extra information that can be removed. CANNOT use "that".</li>
+      </ul>
+      <div class="example-box orange">
+        <p>✅ Defining: The student <strong>who studies hard</strong> will succeed.</p>
+        <p>✅ Non-defining: My brother, <strong>who lives in Jakarta</strong>, is a doctor.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-primary" onclick="startQuiz()">📝 Practice Relative Pronoun Questions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MATERIAL 5: SUBJECT VERB AGREEMENT ===== -->
+<div id="page-mat-4" class="page">
+  <div class="mat-page-header">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="mat-page-title">
+      <div class="mat-page-icon" style="background:var(--pink-light)">⚖️</div>
+      <h1 style="color:var(--pink)">Subject-Verb Agreement</h1>
+    </div>
+    <p class="mat-page-desc">Subject-Verb Agreement is the rule for matching the subject with the verb in a sentence. Singular subject → singular verb, plural subject → plural verb.</p>
+  </div>
+  <div class="mat-content">
+
+    <div class="content-block pink">
+      <h2>📌 Basic Rule</h2>
+      <p>A singular subject uses a singular verb (+ s/es), a plural subject uses a plural verb (no s/es).</p>
+      <div class="example-box pink">
+        <p>✅ She <strong>reads</strong> books every night. (singular)</p>
+        <p>✅ They <strong>read</strong> books every night. (plural)</p>
+        <p>✅ The dog <strong>barks</strong> loudly. (singular)</p>
+        <p>✅ The dogs <strong>bark</strong> loudly. (plural)</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>📌 Rule 2: Compound Subject (and)</h2>
+      <p>Two subjects joined by "and" = plural verb.</p>
+      <div class="example-box">
+        <p>✅ Tom and Jerry <strong>are</strong> best friends.</p>
+        <p>✅ Rice and bread <strong>are</strong> staple foods.</p>
+      </div>
+      <p>⚠️ Exception: if two subjects refer to the same thing → singular.</p>
+      <div class="example-box">
+        <p>✅ Bread and butter <strong>is</strong> my favorite breakfast. (satu konsep)</p>
+      </div>
+    </div>
+
+    <div class="content-block orange">
+      <h2>📌 Rule 3: Or / Nor / Either...or / Neither...nor</h2>
+      <p>The verb agrees with the nearest subject.</p>
+      <div class="example-box orange">
+        <p>✅ Either she or her friends <strong>are</strong> responsible. (friends = plural)</p>
+        <p>✅ Neither the students nor the teacher <strong>was</strong> there. (teacher = singular)</p>
+        <p>✅ John or his brothers <strong>have</strong> the key. (brothers = plural)</p>
+      </div>
+    </div>
+
+    <div class="content-block green">
+      <h2>📌 Rule 4: Collective Nouns</h2>
+      <p>Collective nouns (team, group, family, committee) can be singular or plural depending on context.</p>
+      <div class="example-box green">
+        <p>✅ The team <strong>is</strong> playing well. (sebagai satu unit)</p>
+        <p>✅ The team <strong>are</strong> arguing among themselves. (individu dalam tim)</p>
+      </div>
+    </div>
+
+    <div class="content-block purple">
+      <h2>📌 Rule 5: Indefinite Pronouns</h2>
+      <ul>
+        <li><strong>Always singular:</strong> everyone, everybody, everything, someone, somebody, anyone, nobody, each, either, neither, one</li>
+        <li><strong>Always plural:</strong> both, many, few, several, others</li>
+        <li><strong>Can be singular/plural:</strong> all, some, none, most, any (depends on the following noun)</li>
+      </ul>
+      <div class="example-box purple">
+        <p>✅ Everyone <strong>is</strong> invited to the party.</p>
+        <p>✅ Both of them <strong>are</strong> doctors.</p>
+        <p>✅ Some of the water <strong>is</strong> gone. (singular noun)</p>
+        <p>✅ Some of the students <strong>are</strong> absent. (plural noun)</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2>📌 Rule 6: Phrases Between Subject and Verb</h2>
+      <p>The verb must agree with the main subject, NOT with the noun in the phrase between subject and verb.</p>
+      <div class="example-box">
+        <p>✅ The box of chocolates <strong>is</strong> on the table. (The box = singular)</p>
+        <p>✅ The students in my class <strong>are</strong> smart. (The students = plural)</p>
+        <p>❌ The box of chocolates <u>are</u> on the table. ❌</p>
+      </div>
+    </div>
+
+    <div class="content-block pink">
+      <h2>📌 Rule 7: Numbers & Quantities</h2>
+      <ul>
+        <li>Phrases expressing amounts of money, time, distance → singular verb</li>
+        <li>The number of + plural noun → singular verb</li>
+        <li>A number of + plural noun → plural verb</li>
+      </ul>
+      <div class="example-box pink">
+        <p>✅ Ten dollars <strong>is</strong> not enough. (uang = satu jumlah)</p>
+        <p>✅ The number of students <strong>is</strong> increasing.</p>
+        <p>✅ A number of students <strong>are</strong> absent today.</p>
+      </div>
+    </div>
+
+    <div class="content-block orange">
+      <h2>📌 Additional Important Rules</h2>
+      <ul>
+        <li>Words ending in -s but with singular meaning: economics, mathematics, news, physics → singular</li>
+        <li>Gerund as subject → singular: Swimming <strong>is</strong> good for health.</li>
+        <li>Relative clauses don't affect the main subject-verb agreement</li>
+        <li>There is/are: agree with the following noun</li>
+      </ul>
+      <div class="example-box orange">
+        <p>✅ Mathematics <strong>is</strong> my favorite subject.</p>
+        <p>✅ There <strong>are</strong> many books on the shelf.</p>
+        <p>✅ There <strong>is</strong> a book on the desk.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-primary" onclick="startQuiz()">📝 Practice SVA Questions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ PAGE ===== -->
+<div id="page-quiz" class="page">
+  <div class="quiz-container">
+    <div id="quiz-start-screen">
+      <div class="quiz-header">
+        <div style="font-size:4rem;margin-bottom:16px">🏆</div>
+        <h1>English Grammar Quiz</h1>
+        <p>50 questions covering all grammar topics. Good luck!</p>
+        <div class="quiz-meta">
+          <div class="quiz-meta-item"><div class="num">50</div><div class="lbl">Questions</div></div>
+          <div class="quiz-meta-item"><div class="num">5</div><div class="lbl">Topics</div></div>
+          <div class="quiz-meta-item"><div class="num">10</div><div class="lbl">per Topic</div></div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0">
+          <span style="background:var(--blue-light);color:var(--blue);padding:5px 12px;border-radius:12px;font-weight:700;font-size:0.82rem">⏰ Tenses</span>
+          <span style="background:var(--green-light);color:#16a34a;padding:5px 12px;border-radius:12px;font-weight:700;font-size:0.82rem">🔀 Conditionals</span>
+          <span style="background:var(--purple-light);color:var(--purple);padding:5px 12px;border-radius:12px;font-weight:700;font-size:0.82rem">🔍 Error Recognition</span>
+          <span style="background:var(--orange-light);color:var(--orange);padding:5px 12px;border-radius:12px;font-weight:700;font-size:0.82rem">🔗 Relative Pronouns</span>
+          <span style="background:var(--pink-light);color:var(--pink);padding:5px 12px;border-radius:12px;font-weight:700;font-size:0.82rem">⚖️ SVA</span>
+        </div>
+        <button class="btn-primary" style="font-size:1.1rem;padding:15px 40px" onclick="beginQuiz()">🚀 Start Quiz!</button>
+        <br><button class="back-btn" style="margin-top:16px" onclick="goHome()">← Back to Home</button>
+      </div>
+    </div>
+
+    <div id="quiz-main" style="display:none">
+      <div class="q-dots" id="q-dots"></div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      <div class="question-card" id="question-card">
+        <div class="question-meta">
+          <span class="q-badge" id="q-badge">Tense</span>
+          <span class="q-num" id="q-num">Question 1 of 50</span>
+        </div>
+        <div class="question-text" id="question-text"></div>
+        <div class="options-grid" id="options-grid"></div>
+        <div class="answer-feedback" id="answer-feedback"></div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-quiz-nav" id="btn-prev" onclick="prevQuestion()" disabled>← Previous</button>
+        <span id="quiz-score-live" style="font-weight:800;color:var(--green);font-size:1rem"></span>
+        <button class="btn-quiz-nav orange" id="btn-next" onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <div id="quiz-result" style="display:none">
+      <div class="result-card">
+        <div style="font-size:3rem;margin-bottom:16px" id="result-emoji">🏆</div>
+        <div class="score-circle" id="score-circle">
+          <span class="score-num" id="result-score">0</span>
+          <span class="score-lbl">of 50</span>
+        </div>
+        <h2 id="result-title">Quiz Result</h2>
+        <p id="result-desc">Great job!</p>
+        <div class="result-breakdown" id="result-breakdown"></div>
+        <div class="result-btns">
+          <button class="btn-primary" onclick="restartQuiz()">🔄 Retake Quiz</button>
+          <button class="btn-outline-white" style="background:var(--blue);color:#fff;border-color:var(--blue);padding:13px 28px;border-radius:30px;font-family:Nunito;font-weight:800;font-size:1rem;cursor:pointer" onclick="goHome()">🏠 Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  // ===== GRAMMAR TENSE (1-10) =====
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "She _____ to school every day by bus.", opts: ["go","goes","went","is going"], ans: 1,
+    exp: "'She' is a singular subject → Simple Present → goes (V1+s/es)." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "They _____ dinner when the phone rang.", opts: ["have","were having","had","are having"], ans: 1,
+    exp: "Two simultaneous past events → Past Continuous: were having." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "I _____ this book since last Monday.", opts: ["read","have been reading","was reading","had read"], ans: 1,
+    exp: "Activity started in the past and still ongoing + 'since' → Present Perfect Continuous." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "By the time she arrives, we _____ our homework.", opts: ["finish","finished","will have finished","are finishing"], ans: 2,
+    exp: "'By the time' + future = Future Perfect: will have finished." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "He _____ in this company for 5 years before he retired.", opts: ["works","worked","has worked","had worked"], ans: 3,
+    exp: "Event completed before another past event → Past Perfect: had worked." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "Look! The children _____ in the park.", opts: ["play","played","are playing","have played"], ans: 2,
+    exp: "'Look!' signals something happening now → Present Continuous: are playing." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "We _____ to Paris next summer.", opts: ["go","went","have gone","are going"], ans: 3,
+    exp: "Already decided plan → Present Continuous for future: are going." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "She _____ three books last week.", opts: ["reads","read","has read","was reading"], ans: 1,
+    exp: "'Last week' is a past time marker → Simple Past: read." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "Water _____ at 100 degrees Celsius.", opts: ["boil","boils","boiled","is boiling"], ans: 1,
+    exp: "Scientific fact that is always true → Simple Present: boils." },
+  { topic: "Grammar Tense", badge: "⏰ Tense", badgeColor: "#3B82F6", badgeBg: "#EFF6FF",
+    q: "At 8 PM last night, I _____ TV.", opts: ["watch","watched","was watching","have watched"], ans: 2,
+    exp: "Activity in progress at a specific past time → Past Continuous: was watching." },
+
+  // ===== CONDITIONAL TENSE (11-20) =====
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If it _____ tomorrow, we will cancel the trip.", opts: ["rain","rains","rained","would rain"], ans: 1,
+    exp: "First Conditional: If + Simple Present, will + V1. Subject: it → rains." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If I _____ rich, I would buy a mansion.", opts: ["am","be","were","had been"], ans: 2,
+    exp: "Second Conditional (unreal present): If + Simple Past (were), would + V1." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "She would have passed the exam if she _____ harder.", opts: ["study","studied","had studied","would study"], ans: 2,
+    exp: "Third Conditional: If + Past Perfect (had studied), would have + V3." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If you heat ice, it _____.", opts: ["melts","melted","would melt","will melt"], ans: 0,
+    exp: "Zero Conditional (general truth): If + Simple Present, Simple Present → melts." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If I had known about the party, I _____ you.", opts: ["tell","would tell","had told","would have told"], ans: 3,
+    exp: "Third Conditional: had known → would have told (V3)." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "_____ he study more, he will pass the exam.", opts: ["If","Unless","Should","Although"], ans: 2,
+    exp: "'Should he study more' = inverted conditional (formal) = If he studies more." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If she _____ the medicine, she would be well by now. (mixed conditional)", opts: ["takes","took","had taken","has taken"], ans: 2,
+    exp: "Mixed Conditional (past cause, present result): If + Past Perfect → would + V1." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "Unless you _____, you won't improve.", opts: ["practice","practices","practiced","don't practice"], ans: 0,
+    exp: "'Unless' = if not. Unless you practice = If you don't practice → First Conditional." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "If I were you, I _____ the job.", opts: ["accept","accepted","would accept","will accept"], ans: 2,
+    exp: "Second Conditional: If I were you → would accept (advice/unreal)." },
+  { topic: "Conditional Tense", badge: "🔀 Conditional", badgeColor: "#16a34a", badgeBg: "#F0FDF4",
+    q: "Had they arrived on time, they _____ the beginning of the show.", opts: ["see","saw","would see","would have seen"], ans: 3,
+    exp: "Inverted Third Conditional: Had they arrived = If they had arrived → would have seen." },
+
+  // ===== ERROR RECOGNITION (21-30) =====
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: She (A) has went (B) to the market (C) this morning (D).", opts: ["A","B","C","D"], ans: 1,
+    exp: "B) 'has went' is wrong. Correct: 'has gone' (Present Perfect = has/have + V3)." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: He (A) is more (B) cleverer (C) than (D) his brother.", opts: ["A","B","C","D"], ans: 2,
+    exp: "C) 'more cleverer' is a double comparative. Correct: 'cleverer' or 'more clever'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: Between (A) you and I (B), this project (C) needs improvement (D).", opts: ["A","B","C","D"], ans: 1,
+    exp: "B) 'I' is wrong. After the preposition 'between', use the object pronoun: 'me'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: She is (A) an (B) university (C) student (D).", opts: ["A","B","C","D"], ans: 1,
+    exp: "B) 'an' is wrong. 'University' starts with /j/ sound (consonant) → use 'a university'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: I don't (A) know (B) nothing (C) about (D) it.", opts: ["A","B","C","D"], ans: 2,
+    exp: "C) 'nothing' creates a double negative. Correct: 'anything'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: She (A) returned (B) back (C) home after (D) the trip.", opts: ["A","B","C","D"], ans: 2,
+    exp: "C) 'back' is redundant. 'Return' already means to go back → remove 'back'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: He is (A) good (B) in (C) playing (D) chess.", opts: ["A","B","C","D"], ans: 2,
+    exp: "C) 'in' is wrong. The correct phrase: 'good at' (not 'good in')." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: The news (A) are (B) shocking (C) everyone (D) in the town.", opts: ["A","B","C","D"], ans: 1,
+    exp: "B) 'are' is wrong. 'News' ends in -s but is singular in meaning → 'is'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: I (A) have (B) seen (C) her yesterday (D).", opts: ["A","B","C","D"], ans: 1,
+    exp: "B) 'have' is wrong. 'Yesterday' indicates specific past time → Simple Past: 'I saw her yesterday'." },
+  { topic: "Error Recognition", badge: "🔍 Error", badgeColor: "#8B5CF6", badgeBg: "#F5F3FF",
+    q: "Find the error: She (A) suggested (B) me (C) to go (D) to the doctor.", opts: ["A","B","C","D"], ans: 2,
+    exp: "C) 'me' is wrong. 'Suggest' is not followed by direct object + infinitive. Correct: 'suggested that I go'." },
+
+  // ===== RELATIVE PRONOUN (31-40) =====
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "The woman _____ called you is my sister.", opts: ["whom","whose","who","which"], ans: 2,
+    exp: "'Woman' (person) as the subject of the relative clause → who." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "This is the book _____ I borrowed from the library.", opts: ["who","whom","whose","which"], ans: 3,
+    exp: "'Book' (thing) → which (or that). The correct answer here: which." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "The student _____ bag was stolen reported it to the teacher.", opts: ["who","whom","whose","which"], ans: 2,
+    exp: "Shows possession (student's bag) → whose." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "He is the person _____ I trust most.", opts: ["who","whom","whose","which"], ans: 1,
+    exp: "'Person' as an object (I trust him/her) → whom (formal)." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "The only thing _____ matters is your health.", opts: ["who","whom","which","that"], ans: 3,
+    exp: "After 'the only thing' → must use 'that'." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "My brother, _____ lives in Bali, is a chef.", opts: ["that","which","who","whom"], ans: 2,
+    exp: "Non-defining clause (has a comma), person = who. 'That' cannot be used in non-defining clauses." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "The company _____ he works for is very successful.", opts: ["who","whom","which","whose"], ans: 2,
+    exp: "After preposition 'for', thing (company) → which. 'The company which/that he works for'." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "She is the actress _____ performance impressed everyone.", opts: ["who","whom","whose","which"], ans: 2,
+    exp: "Possession: actress's performance → whose." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "This is the restaurant _____ we had our anniversary dinner.", opts: ["that","which","where","who"], ans: 2,
+    exp: "Indicates place → where (relative adverb, often grouped with pronouns)." },
+  { topic: "Relative Pronoun", badge: "🔗 Relative", badgeColor: "#F97316", badgeBg: "#FFF7ED",
+    q: "The man _____ I told you about has just arrived.", opts: ["that","who","whom","whose"], ans: 2,
+    exp: "Person as object of 'about' → whom (formal: 'the man about whom I told you')." },
+
+  // ===== SUBJECT-VERB AGREEMENT (41-50) =====
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Mathematics _____ my favorite subject.", opts: ["are","were","is","have been"], ans: 2,
+    exp: "Words ending in -s but singular in meaning (mathematics, news, physics) → is." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Either Tom or his friends _____ responsible for this.", opts: ["is","was","are","has been"], ans: 2,
+    exp: "Either...or: verb agrees with the nearest subject (his friends = plural) → are." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "The number of students in this class _____ thirty.", opts: ["are","were","is","have been"], ans: 2,
+    exp: "'The number of' + plural noun → singular verb: is." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "A number of students _____ absent today.", opts: ["is","was","are","has been"], ans: 2,
+    exp: "'A number of' + plural noun → plural verb: are." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Everyone in the class _____ passed the exam.", opts: ["have","are","has","had been"], ans: 2,
+    exp: "'Everyone' is a singular indefinite pronoun → has (has passed)." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "The box of chocolates _____ on the table.", opts: ["are","were","is","have been"], ans: 2,
+    exp: "Main subject is 'The box' (singular), not 'chocolates' → is." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Neither the manager nor the employees _____ happy about the news.", opts: ["is","was","are","has been"], ans: 2,
+    exp: "Neither...nor: verb agrees with 'employees' (plural) → are." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Tom and Jerry _____ best friends.", opts: ["is","was","are","has been"], ans: 2,
+    exp: "Two subjects joined by 'and' → plural verb: are." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "Swimming _____ a great exercise for the whole body.", opts: ["are","were","is","have been"], ans: 2,
+    exp: "Gerund (swimming) as subject → singular verb: is." },
+  { topic: "Subject-Verb Agreement", badge: "⚖️ SVA", badgeColor: "#EC4899", badgeBg: "#FDF2F8",
+    q: "There _____ many reasons why I love this country.", opts: ["is","was","has been","are"], ans: 3,
+    exp: "'There are' is used because 'reasons' is plural → are." },
+];
+
+let currentQ = 0;
+let answers = Array(50).fill(null);
+let scores = { "Grammar Tense": 0, "Conditional Tense": 0, "Error Recognition": 0, "Relative Pronoun": 0, "Subject-Verb Agreement": 0 };
+
+function goHome() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-home').classList.add('active');
+}
+
+function showMaterial(idx) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-mat-' + idx).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startQuiz() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-quiz').classList.add('active');
+  document.getElementById('quiz-start-screen').style.display = 'block';
+  document.getElementById('quiz-main').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+function beginQuiz() {
+  currentQ = 0;
+  answers = Array(50).fill(null);
+  document.getElementById('quiz-start-screen').style.display = 'none';
+  document.getElementById('quiz-main').style.display = 'block';
+  buildDots();
+  renderQuestion();
+}
+
+function buildDots() {
+  const dots = document.getElementById('q-dots');
+  dots.innerHTML = '';
+  for (let i = 0; i < 50; i++) {
+    const d = document.createElement('div');
+    d.className = 'q-dot' + (i === currentQ ? ' current' : '');
+    d.onclick = () => jumpTo(i);
+    dots.appendChild(d);
+  }
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll('.q-dot');
+  dots.forEach((d, i) => {
+    d.className = 'q-dot';
+    if (answers[i] !== null) {
+      d.classList.add(answers[i] === questions[i].ans ? 'correct-dot' : 'wrong-dot');
+    }
+    if (i === currentQ) d.classList.add('current');
+  });
+}
+
+function jumpTo(idx) {
+  currentQ = idx;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('progress-bar').style.width = ((currentQ + 1) / 50 * 100) + '%';
+  const badge = document.getElementById('q-badge');
+  badge.textContent = q.badge;
+  badge.style.background = q.badgeBg;
+  badge.style.color = q.badgeColor;
+  document.getElementById('q-num').textContent = 'Question ' + (currentQ + 1) + ' of 50';
+  document.getElementById('question-text').innerHTML = q.q;
+  const opts = document.getElementById('options-grid');
+  opts.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    if (answers[currentQ] !== null) {
+      if (i === q.ans) btn.classList.add('correct');
+      else if (i === answers[currentQ] && answers[currentQ] !== q.ans) btn.classList.add('wrong');
+      else btn.classList.add('disabled');
+    }
+    btn.innerHTML = '<span class="option-letter">' + letters[i] + '</span>' + opt;
+    btn.onclick = () => selectAnswer(i);
+    opts.appendChild(btn);
+  });
+  const feedback = document.getElementById('answer-feedback');
+  if (answers[currentQ] !== null) {
+    feedback.style.display = 'block';
+    if (answers[currentQ] === q.ans) {
+      feedback.className = 'answer-feedback';
+      feedback.innerHTML = '✅ Correct! ' + q.exp;
+    } else {
+      feedback.className = 'answer-feedback wrong';
+      feedback.innerHTML = '❌ Incorrect. Correct answer: <strong>' + letters[q.ans] + ') ' + q.opts[q.ans] + '</strong>. ' + q.exp;
+    }
+  } else {
+    feedback.style.display = 'none';
+  }
+  document.getElementById('btn-prev').disabled = currentQ === 0;
+  const nextBtn = document.getElementById('btn-next');
+  if (currentQ === 49) {
+    nextBtn.textContent = '🏁 View Results';
+    nextBtn.className = 'btn-quiz-nav';
+    nextBtn.style.background = '#22C55E';
+  } else {
+    nextBtn.textContent = 'Next →';
+    nextBtn.className = 'btn-quiz-nav orange';
+    nextBtn.style.background = '';
+  }
+  const answered = answers.filter(a => a !== null).length;
+  const correct = answers.filter((a, i) => a === questions[i].ans).length;
+  document.getElementById('quiz-score-live').textContent = answered > 0 ? '✅ ' + correct + '/' + answered : '';
+  updateDots();
+}
+
+function selectAnswer(idx) {
+  if (answers[currentQ] !== null) return;
+  answers[currentQ] = idx;
+  if (idx === questions[currentQ].ans) scores[questions[currentQ].topic]++;
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if (currentQ === 49) { showResult(); return; }
+  currentQ++;
+  renderQuestion();
+}
+
+function prevQuestion() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function showResult() {
+  document.getElementById('quiz-main').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+  const total = answers.filter((a, i) => a === questions[i].ans).length;
+  document.getElementById('result-score').textContent = total;
+  const pct = Math.round(total / 50 * 100);
+  let emoji, title, desc, color;
+  if (pct >= 90) { emoji='🏆'; title='Excellent!'; desc='Your English skills are outstanding! Score: '+pct+'%'; color='#22C55E'; }
+  else if (pct >= 75) { emoji='🥇'; title='Great Job!'; desc='Satisfactory results! Score: '+pct+'%. Keep practicing!'; color='#3B82F6'; }
+  else if (pct >= 60) { emoji='👍'; title='Good!'; desc='Score: '+pct+'%. Some areas need improvement!'; color='#F97316'; }
+  else if (pct >= 40) { emoji='📖'; title='Keep Learning'; desc='Score: '+pct+'%. Review the material carefully!'; color='#EF4444'; }
+  else { emoji='💪'; title='Keep Trying!'; desc='Score: '+pct+'%. Don\'t give up, review and try again!'; color='#EC4899'; }
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('score-circle').style.borderColor = color;
+  document.getElementById('result-score').style.color = color;
+  const topics = ["Grammar Tense","Conditional Tense","Error Recognition","Relative Pronoun","Subject-Verb Agreement"];
+  const icons = ["⏰","🔀","🔍","🔗","⚖️"];
+  const colors2 = ["#3B82F6","#22C55E","#8B5CF6","#F97316","#EC4899"];
+  const bd = document.getElementById('result-breakdown');
+  bd.innerHTML = '';
+  topics.forEach((t, i) => {
+    const sc = answers.slice(i*10,(i+1)*10).filter((a,j) => a === questions[i*10+j].ans).length;
+    const div = document.createElement('div');
+    div.className = 'breakdown-item';
+    div.innerHTML = '<div class="bi-num" style="color:'+colors2[i]+'">' + icons[i] + ' ' + sc + '/10</div><div class="bi-lbl">' + t.replace('Subject-Verb Agreement','SVA') + '</div>';
+    bd.appendChild(div);
+  });
+  window.scrollTo(0, 0);
+}
+
+function restartQuiz() {
+  scores = { "Grammar Tense": 0, "Conditional Tense": 0, "Error Recognition": 0, "Relative Pronoun": 0, "Subject-Verb Agreement": 0 };
+  beginQuiz();
+}
+</script>
+</body>
+</html>
