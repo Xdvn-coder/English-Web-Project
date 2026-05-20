@@ -586,6 +586,56 @@
     <div style="text-align:center;margin-top:32px">
       <button class="btn-primary" onclick="startQuiz()">📝 Practice Tense Questions →</button>
     </div>
+
+    <!-- QUIZ 10 SOAL GRAMMAR TENSE -->
+    <div style="margin-top:60px;padding-top:60px;border-top:3px solid #E2E8F0">
+      <div class="quiz-header">
+        <h2 style="font-size:1.6rem;font-family:Poppins;font-weight:800">📋 Quick Quiz - 10 Questions</h2>
+        <p style="color:var(--muted);margin-top:6px">Test your understanding of Grammar Tense right here!</p>
+      </div>
+
+      <div id="tense-quiz-start" style="text-align:center;margin:24px 0">
+        <button class="btn-primary" style="font-size:1rem;padding:12px 32px" onclick="startMiniQuiz('tense', 0)">🚀 Start Quiz</button>
+      </div>
+
+      <div id="tense-quiz-main" style="display:none;max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span id="tense-q-num" style="font-weight:700;color:var(--muted)">Question 1 of 10</span>
+          <span id="tense-quiz-score" style="font-weight:800;color:var(--green)"></span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="tense-progress-bar" style="width:0"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="q-badge" style="background:var(--blue-light);color:var(--blue)">⏰ Tense</span>
+          </div>
+          <div class="question-text" id="tense-question-text"></div>
+          <div class="options-grid" id="tense-options-grid"></div>
+          <div class="answer-feedback" id="tense-answer-feedback"></div>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="btn-quiz-nav" id="tense-btn-prev" onclick="prevMiniQuiz('tense')" disabled>← Previous</button>
+          <button class="btn-quiz-nav orange" id="tense-btn-next" onclick="nextMiniQuiz('tense')">Next →</button>
+        </div>
+      </div>
+
+      <div id="tense-quiz-result" style="display:none">
+        <div class="result-card">
+          <div style="font-size:3rem;margin-bottom:16px" id="tense-result-emoji">🏆</div>
+          <div class="score-circle" id="tense-score-circle" style="border-color:var(--blue)">
+            <span class="score-num" id="tense-result-score" style="color:var(--blue)">0</span>
+            <span class="score-lbl">of 10</span>
+          </div>
+          <h2 id="tense-result-title" style="font-family:Poppins;font-weight:800">Great!</h2>
+          <p id="tense-result-desc" style="color:var(--muted)">Good job!</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn-primary" onclick="restartMiniQuiz('tense')">🔄 Retake Quiz</button>
+            <button class="btn-primary" style="background:var(--green)" onclick="closeMiniQuiz('tense')">✓ Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -665,6 +715,56 @@
     </div>
     <div style="text-align:center;margin-top:32px">
       <button class="btn-primary" onclick="startQuiz()">📝 Practice Conditional Questions →</button>
+    </div>
+
+    <!-- QUIZ 10 SOAL CONDITIONAL TENSE -->
+    <div style="margin-top:60px;padding-top:60px;border-top:3px solid #E2E8F0">
+      <div class="quiz-header">
+        <h2 style="font-size:1.6rem;font-family:Poppins;font-weight:800">📋 Quick Quiz - 10 Questions</h2>
+        <p style="color:var(--muted);margin-top:6px">Test your understanding of Conditional Sentences right here!</p>
+      </div>
+
+      <div id="conditional-quiz-start" style="text-align:center;margin:24px 0">
+        <button class="btn-primary" style="font-size:1rem;padding:12px 32px" onclick="startMiniQuiz('conditional', 0)">🚀 Start Quiz</button>
+      </div>
+
+      <div id="conditional-quiz-main" style="display:none;max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span id="conditional-q-num" style="font-weight:700;color:var(--muted)">Question 1 of 10</span>
+          <span id="conditional-quiz-score" style="font-weight:800;color:var(--green)"></span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="conditional-progress-bar" style="width:0"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="q-badge" style="background:var(--green-light);color:#16a34a">🔀 Conditional</span>
+          </div>
+          <div class="question-text" id="conditional-question-text"></div>
+          <div class="options-grid" id="conditional-options-grid"></div>
+          <div class="answer-feedback" id="conditional-answer-feedback"></div>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="btn-quiz-nav" id="conditional-btn-prev" onclick="prevMiniQuiz('conditional')" disabled>← Previous</button>
+          <button class="btn-quiz-nav orange" id="conditional-btn-next" onclick="nextMiniQuiz('conditional')">Next →</button>
+        </div>
+      </div>
+
+      <div id="conditional-quiz-result" style="display:none">
+        <div class="result-card">
+          <div style="font-size:3rem;margin-bottom:16px" id="conditional-result-emoji">🏆</div>
+          <div class="score-circle" id="conditional-score-circle" style="border-color:#16a34a">
+            <span class="score-num" id="conditional-result-score" style="color:#16a34a">0</span>
+            <span class="score-lbl">of 10</span>
+          </div>
+          <h2 id="conditional-result-title" style="font-family:Poppins;font-weight:800">Great!</h2>
+          <p id="conditional-result-desc" style="color:var(--muted)">Good job!</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn-primary" onclick="restartMiniQuiz('conditional')">🔄 Retake Quiz</button>
+            <button class="btn-primary" style="background:var(--green)" onclick="closeMiniQuiz('conditional')">✓ Done</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -750,6 +850,56 @@
     </div>
     <div style="text-align:center;margin-top:32px">
       <button class="btn-primary" onclick="startQuiz()">📝 Practice Error Recognition Questions →</button>
+    </div>
+
+    <!-- QUIZ 10 SOAL ERROR RECOGNITION -->
+    <div style="margin-top:60px;padding-top:60px;border-top:3px solid #E2E8F0">
+      <div class="quiz-header">
+        <h2 style="font-size:1.6rem;font-family:Poppins;font-weight:800">📋 Quick Quiz - 10 Questions</h2>
+        <p style="color:var(--muted);margin-top:6px">Test your understanding of Error Recognition right here!</p>
+      </div>
+
+      <div id="error-quiz-start" style="text-align:center;margin:24px 0">
+        <button class="btn-primary" style="font-size:1rem;padding:12px 32px" onclick="startMiniQuiz('error', 0)">🚀 Start Quiz</button>
+      </div>
+
+      <div id="error-quiz-main" style="display:none;max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span id="error-q-num" style="font-weight:700;color:var(--muted)">Question 1 of 10</span>
+          <span id="error-quiz-score" style="font-weight:800;color:var(--green)"></span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="error-progress-bar" style="width:0"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="q-badge" style="background:var(--purple-light);color:var(--purple)">🔍 Error</span>
+          </div>
+          <div class="question-text" id="error-question-text"></div>
+          <div class="options-grid" id="error-options-grid"></div>
+          <div class="answer-feedback" id="error-answer-feedback"></div>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="btn-quiz-nav" id="error-btn-prev" onclick="prevMiniQuiz('error')" disabled>← Previous</button>
+          <button class="btn-quiz-nav orange" id="error-btn-next" onclick="nextMiniQuiz('error')">Next →</button>
+        </div>
+      </div>
+
+      <div id="error-quiz-result" style="display:none">
+        <div class="result-card">
+          <div style="font-size:3rem;margin-bottom:16px" id="error-result-emoji">🏆</div>
+          <div class="score-circle" id="error-score-circle" style="border-color:var(--purple)">
+            <span class="score-num" id="error-result-score" style="color:var(--purple)">0</span>
+            <span class="score-lbl">of 10</span>
+          </div>
+          <h2 id="error-result-title" style="font-family:Poppins;font-weight:800">Great!</h2>
+          <p id="error-result-desc" style="color:var(--muted)">Good job!</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn-primary" onclick="restartMiniQuiz('error')">🔄 Retake Quiz</button>
+            <button class="btn-primary" style="background:var(--green)" onclick="closeMiniQuiz('error')">✓ Done</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -844,6 +994,56 @@
     </div>
     <div style="text-align:center;margin-top:32px">
       <button class="btn-primary" onclick="startQuiz()">📝 Practice Relative Pronoun Questions →</button>
+    </div>
+
+    <!-- QUIZ 10 SOAL RELATIVE PRONOUN -->
+    <div style="margin-top:60px;padding-top:60px;border-top:3px solid #E2E8F0">
+      <div class="quiz-header">
+        <h2 style="font-size:1.6rem;font-family:Poppins;font-weight:800">📋 Quick Quiz - 10 Questions</h2>
+        <p style="color:var(--muted);margin-top:6px">Test your understanding of Relative Pronouns right here!</p>
+      </div>
+
+      <div id="relative-quiz-start" style="text-align:center;margin:24px 0">
+        <button class="btn-primary" style="font-size:1rem;padding:12px 32px" onclick="startMiniQuiz('relative', 0)">🚀 Start Quiz</button>
+      </div>
+
+      <div id="relative-quiz-main" style="display:none;max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span id="relative-q-num" style="font-weight:700;color:var(--muted)">Question 1 of 10</span>
+          <span id="relative-quiz-score" style="font-weight:800;color:var(--green)"></span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="relative-progress-bar" style="width:0"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="q-badge" style="background:var(--orange-light);color:var(--orange)">🔗 Relative</span>
+          </div>
+          <div class="question-text" id="relative-question-text"></div>
+          <div class="options-grid" id="relative-options-grid"></div>
+          <div class="answer-feedback" id="relative-answer-feedback"></div>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="btn-quiz-nav" id="relative-btn-prev" onclick="prevMiniQuiz('relative')" disabled>← Previous</button>
+          <button class="btn-quiz-nav orange" id="relative-btn-next" onclick="nextMiniQuiz('relative')">Next →</button>
+        </div>
+      </div>
+
+      <div id="relative-quiz-result" style="display:none">
+        <div class="result-card">
+          <div style="font-size:3rem;margin-bottom:16px" id="relative-result-emoji">🏆</div>
+          <div class="score-circle" id="relative-score-circle" style="border-color:var(--orange)">
+            <span class="score-num" id="relative-result-score" style="color:var(--orange)">0</span>
+            <span class="score-lbl">of 10</span>
+          </div>
+          <h2 id="relative-result-title" style="font-family:Poppins;font-weight:800">Great!</h2>
+          <p id="relative-result-desc" style="color:var(--muted)">Good job!</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn-primary" onclick="restartMiniQuiz('relative')">🔄 Retake Quiz</button>
+            <button class="btn-primary" style="background:var(--green)" onclick="closeMiniQuiz('relative')">✓ Done</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -958,6 +1158,56 @@
     </div>
     <div style="text-align:center;margin-top:32px">
       <button class="btn-primary" onclick="startQuiz()">📝 Practice SVA Questions →</button>
+    </div>
+
+    <!-- QUIZ 10 SOAL SUBJECT-VERB AGREEMENT -->
+    <div style="margin-top:60px;padding-top:60px;border-top:3px solid #E2E8F0">
+      <div class="quiz-header">
+        <h2 style="font-size:1.6rem;font-family:Poppins;font-weight:800">📋 Quick Quiz - 10 Questions</h2>
+        <p style="color:var(--muted);margin-top:6px">Test your understanding of Subject-Verb Agreement right here!</p>
+      </div>
+
+      <div id="sva-quiz-start" style="text-align:center;margin:24px 0">
+        <button class="btn-primary" style="font-size:1rem;padding:12px 32px" onclick="startMiniQuiz('sva', 0)">🚀 Start Quiz</button>
+      </div>
+
+      <div id="sva-quiz-main" style="display:none;max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <span id="sva-q-num" style="font-weight:700;color:var(--muted)">Question 1 of 10</span>
+          <span id="sva-quiz-score" style="font-weight:800;color:var(--green)"></span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="sva-progress-bar" style="width:0"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="q-badge" style="background:var(--pink-light);color:var(--pink)">⚖️ SVA</span>
+          </div>
+          <div class="question-text" id="sva-question-text"></div>
+          <div class="options-grid" id="sva-options-grid"></div>
+          <div class="answer-feedback" id="sva-answer-feedback"></div>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="btn-quiz-nav" id="sva-btn-prev" onclick="prevMiniQuiz('sva')" disabled>← Previous</button>
+          <button class="btn-quiz-nav orange" id="sva-btn-next" onclick="nextMiniQuiz('sva')">Next →</button>
+        </div>
+      </div>
+
+      <div id="sva-quiz-result" style="display:none">
+        <div class="result-card">
+          <div style="font-size:3rem;margin-bottom:16px" id="sva-result-emoji">🏆</div>
+          <div class="score-circle" id="sva-score-circle" style="border-color:var(--pink)">
+            <span class="score-num" id="sva-result-score" style="color:var(--pink)">0</span>
+            <span class="score-lbl">of 10</span>
+          </div>
+          <h2 id="sva-result-title" style="font-family:Poppins;font-weight:800">Great!</h2>
+          <p id="sva-result-desc" style="color:var(--muted)">Good job!</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn-primary" onclick="restartMiniQuiz('sva')">🔄 Retake Quiz</button>
+            <button class="btn-primary" style="background:var(--green)" onclick="closeMiniQuiz('sva')">✓ Done</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1357,6 +1607,210 @@ function restartQuiz() {
   scores = { "Grammar Tense": 0, "Conditional Tense": 0, "Error Recognition": 0, "Relative Pronoun": 0, "Subject-Verb Agreement": 0 };
   beginQuiz();
 }
+
+// ===== MINI QUIZ FUNCTIONS =====
+const miniQuizzes = {
+  tense: {
+    questions: [
+      { q: "She _____ to school every day.", opts: ["go","goes","went","is going"], ans: 1, exp: "Singular subject + Simple Present → goes" },
+      { q: "They _____ dinner when the phone rang.", opts: ["have","were having","had","are having"], ans: 1, exp: "Simultaneous past events → Past Continuous: were having" },
+      { q: "I _____ this book since Monday.", opts: ["read","have been reading","was reading","had read"], ans: 1, exp: "'Since' + still ongoing → Present Perfect Continuous" },
+      { q: "By tomorrow, we _____ our project.", opts: ["finish","finished","will have finished","are finishing"], ans: 2, exp: "'By' + future → Future Perfect" },
+      { q: "He _____ there for 5 years.", opts: ["works","worked","has worked","had worked"], ans: 2, exp: "Still relevant to present → Present Perfect" },
+      { q: "Look! The kids _____ in the park!", opts: ["play","played","are playing","have played"], ans: 2, exp: "'Look!' = now → Present Continuous" },
+      { q: "We _____ to Tokyo next month.", opts: ["go","went","have gone","are going"], ans: 3, exp: "Already decided → Present Continuous for future" },
+      { q: "She _____ three books last week.", opts: ["reads","read","has read","was reading"], ans: 1, exp: "'Last week' = past time → Simple Past" },
+      { q: "Water _____ at 100°C.", opts: ["boil","boils","boiled","is boiling"], ans: 1, exp: "General truth → Simple Present" },
+      { q: "At 8 PM, I _____ TV.", opts: ["watch","watched","was watching","have watched"], ans: 2, exp: "Specific time + activity in progress → Past Continuous" }
+    ],
+    current: 0,
+    answers: [null, null, null, null, null, null, null, null, null, null]
+  },
+  conditional: {
+    questions: [
+      { q: "If it _____ tomorrow, we will cancel.", opts: ["rain","rains","rained","would rain"], ans: 1, exp: "First Conditional: If + Simple Present, will + V1" },
+      { q: "If I _____ rich, I would travel.", opts: ["am","be","were","had been"], ans: 2, exp: "Second Conditional: unreal present → were" },
+      { q: "If she _____ harder, she would have passed.", opts: ["study","studied","had studied","would study"], ans: 2, exp: "Third Conditional: If + Past Perfect → would have + V3" },
+      { q: "If you heat ice, it _____.", opts: ["melts","melted","would melt","will melt"], ans: 0, exp: "Zero Conditional: If + Simple Present, Simple Present" },
+      { q: "If I had known, I _____ you.", opts: ["tell","would tell","had told","would have told"], ans: 3, exp: "Third Conditional: would have told" },
+      { q: "_____ he study, he will pass.", opts: ["If","Unless","Should","Although"], ans: 2, exp: "Inverted conditional = If he studies" },
+      { q: "If she _____ medicine, she'd be well now.", opts: ["takes","took","had taken","has taken"], ans: 2, exp: "Mixed Conditional: past cause, present result" },
+      { q: "Unless you _____, you won't improve.", opts: ["practice","practices","practiced","don't practice"], ans: 0, exp: "Unless = if not → First Conditional" },
+      { q: "If I were you, I _____ the job.", opts: ["accept","accepted","would accept","will accept"], ans: 2, exp: "Second Conditional: advice/unreal → would accept" },
+      { q: "Had they arrived on time, they _____ the show.", opts: ["see","saw","would see","would have seen"], ans: 3, exp: "Inverted Third Conditional: would have seen" }
+    ],
+    current: 0,
+    answers: [null, null, null, null, null, null, null, null, null, null]
+  },
+  error: {
+    questions: [
+      { q: "Find the error: She (A) has went (B) to the market (C) today (D).", opts: ["A","B","C","D"], ans: 1, exp: "B) 'has went' is wrong → 'has gone'" },
+      { q: "Find the error: He (A) is more (B) cleverer (C) than (D) his brother.", opts: ["A","B","C","D"], ans: 2, exp: "C) Double comparative 'more cleverer' → 'cleverer'" },
+      { q: "Find the error: Between (A) you and I (B), this needs (C) improvement (D).", opts: ["A","B","C","D"], ans: 1, exp: "B) After 'between' → object pronoun 'me'" },
+      { q: "Find the error: She is (A) an (B) university (C) student (D).", opts: ["A","B","C","D"], ans: 1, exp: "B) 'university' = /j/ sound → 'a university'" },
+      { q: "Find the error: I don't (A) know (B) nothing (C) about (D) it.", opts: ["A","B","C","D"], ans: 2, exp: "C) Double negative 'nothing' → 'anything'" },
+      { q: "Find the error: She (A) returned (B) back (C) home (D).", opts: ["A","B","C","D"], ans: 2, exp: "C) 'back' is redundant → remove it" },
+      { q: "Find the error: He is (A) good (B) in (C) playing (D) chess.", opts: ["A","B","C","D"], ans: 2, exp: "C) 'good in' → 'good at'" },
+      { q: "Find the error: The news (A) are (B) shocking (C) everyone (D).", opts: ["A","B","C","D"], ans: 1, exp: "B) 'news' is singular → 'is'" },
+      { q: "Find the error: I (A) have (B) seen (C) her yesterday (D).", opts: ["A","B","C","D"], ans: 1, exp: "B) 'yesterday' = past time → 'I saw her'" },
+      { q: "Find the error: She (A) is (B) interested (C) about (D) music.", opts: ["A","B","C","D"], ans: 3, exp: "D) 'interested about' → 'interested in'" }
+    ],
+    current: 0,
+    answers: [null, null, null, null, null, null, null, null, null, null]
+  },
+  relative: {
+    questions: [
+      { q: "The woman _____ called me is my sister.", opts: ["whom","whose","who","which"], ans: 2, exp: "'woman' as subject → who" },
+      { q: "This is the book _____ I borrowed.", opts: ["who","whom","whose","which"], ans: 3, exp: "'book' = thing → which" },
+      { q: "The student _____ bag was stolen reported it.", opts: ["who","whom","whose","which"], ans: 2, exp: "Possession (student's bag) → whose" },
+      { q: "He is the person _____ I trust most.", opts: ["who","whom","whose","which"], ans: 1, exp: "Person as object → whom (formal)" },
+      { q: "The only thing _____ matters is health.", opts: ["who","whom","which","that"], ans: 3, exp: "After 'the only thing' → that" },
+      { q: "My brother, _____ lives in Bali, is a chef.", opts: ["that","which","who","whom"], ans: 2, exp: "Non-defining + person → who (not 'that')" },
+      { q: "The company _____ he works for is successful.", opts: ["who","whom","which","whose"], ans: 2, exp: "After preposition + thing → which" },
+      { q: "She is the actress _____ performance impressed all.", opts: ["who","whom","whose","which"], ans: 2, exp: "Possession → whose" },
+      { q: "This is the restaurant _____ we celebrated.", opts: ["that","which","where","who"], ans: 2, exp: "Place context → where" },
+      { q: "The man _____ I told you about is here.", opts: ["that","who","whom","whose"], ans: 2, exp: "Object of 'about' → whom" }
+    ],
+    current: 0,
+    answers: [null, null, null, null, null, null, null, null, null, null]
+  },
+  sva: {
+    questions: [
+      { q: "Mathematics _____ my favorite subject.", opts: ["are","were","is","have been"], ans: 2, exp: "Ends in -s but singular → is" },
+      { q: "Either Tom or his friends _____ responsible.", opts: ["is","was","are","has been"], ans: 2, exp: "Either...or agrees with nearest (friends) → are" },
+      { q: "The number of students _____ thirty.", opts: ["are","were","is","have been"], ans: 2, exp: "'The number of' + plural → singular 'is'" },
+      { q: "A number of students _____ absent.", opts: ["is","was","are","has been"], ans: 2, exp: "'A number of' + plural → plural 'are'" },
+      { q: "Everyone in the class _____ passed.", opts: ["have","are","has","had been"], ans: 2, exp: "'Everyone' is singular → has" },
+      { q: "The box of chocolates _____ on the table.", opts: ["are","were","is","have been"], ans: 2, exp: "Main subject 'box' (singular) → is" },
+      { q: "Neither the manager nor employees _____ happy.", opts: ["is","was","are","has been"], ans: 2, exp: "Neither...nor agrees with 'employees' → are" },
+      { q: "Tom and Jerry _____ best friends.", opts: ["is","was","are","has been"], ans: 2, exp: "'And' makes plural → are" },
+      { q: "Swimming _____ good exercise.", opts: ["are","were","is","have been"], ans: 2, exp: "Gerund = singular → is" },
+      { q: "There _____ many reasons why.", opts: ["is","was","has been","are"], ans: 3, exp: "'There are' + 'reasons' (plural) → are" }
+    ],
+    current: 0,
+    answers: [null, null, null, null, null, null, null, null, null, null]
+  }
+};
+
+function startMiniQuiz(type, idx) {
+  miniQuizzes[type].current = idx;
+  miniQuizzes[type].answers = Array(10).fill(null);
+  document.getElementById(type + '-quiz-start').style.display = 'none';
+  document.getElementById(type + '-quiz-main').style.display = 'block';
+  document.getElementById(type + '-quiz-result').style.display = 'none';
+  renderMiniQuestion(type);
+}
+
+function renderMiniQuestion(type) {
+  const quiz = miniQuizzes[type];
+  const q = quiz.questions[quiz.current];
+  const idx = quiz.current;
+  
+  document.getElementById(type + '-progress-bar').style.width = ((idx + 1) / 10 * 100) + '%';
+  document.getElementById(type + '-q-num').textContent = 'Question ' + (idx + 1) + ' of 10';
+  document.getElementById(type + '-question-text').innerHTML = q.q;
+  
+  const opts = document.getElementById(type + '-options-grid');
+  opts.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    if (quiz.answers[idx] !== null) {
+      if (i === q.ans) btn.classList.add('correct');
+      else if (i === quiz.answers[idx] && quiz.answers[idx] !== q.ans) btn.classList.add('wrong');
+      else btn.classList.add('disabled');
+    }
+    btn.innerHTML = '<span class="option-letter">' + letters[i] + '</span>' + opt;
+    btn.onclick = () => selectMiniAnswer(type, i);
+    opts.appendChild(btn);
+  });
+  
+  const feedback = document.getElementById(type + '-answer-feedback');
+  if (quiz.answers[idx] !== null) {
+    feedback.style.display = 'block';
+    if (quiz.answers[idx] === q.ans) {
+      feedback.className = 'answer-feedback';
+      feedback.innerHTML = '✅ Correct! ' + q.exp;
+    } else {
+      feedback.className = 'answer-feedback wrong';
+      feedback.innerHTML = '❌ Incorrect. Correct: <strong>' + letters[q.ans] + ')</strong> ' + q.exp;
+    }
+  } else {
+    feedback.style.display = 'none';
+  }
+  
+  document.getElementById(type + '-btn-prev').disabled = idx === 0;
+  const nextBtn = document.getElementById(type + '-btn-next');
+  if (idx === 9) {
+    nextBtn.textContent = '🏁 View Results';
+    nextBtn.style.background = '#22C55E';
+  } else {
+    nextBtn.textContent = 'Next →';
+    nextBtn.style.background = '';
+  }
+  
+  const answered = quiz.answers.filter(a => a !== null).length;
+  const correct = quiz.answers.filter((a, i) => a === quiz.questions[i].ans).length;
+  document.getElementById(type + '-quiz-score').textContent = answered > 0 ? '✅ ' + correct + '/' + answered : '';
+}
+
+function selectMiniAnswer(type, idx) {
+  const quiz = miniQuizzes[type];
+  if (quiz.answers[quiz.current] !== null) return;
+  quiz.answers[quiz.current] = idx;
+  renderMiniQuestion(type);
+}
+
+function nextMiniQuiz(type) {
+  const quiz = miniQuizzes[type];
+  if (quiz.current === 9) {
+    showMiniResult(type);
+  } else {
+    quiz.current++;
+    renderMiniQuestion(type);
+  }
+}
+
+function prevMiniQuiz(type) {
+  const quiz = miniQuizzes[type];
+  if (quiz.current > 0) {
+    quiz.current--;
+    renderMiniQuestion(type);
+  }
+}
+
+function showMiniResult(type) {
+  const quiz = miniQuizzes[type];
+  document.getElementById(type + '-quiz-main').style.display = 'none';
+  document.getElementById(type + '-quiz-result').style.display = 'block';
+  
+  const total = quiz.answers.filter((a, i) => a === quiz.questions[i].ans).length;
+  document.getElementById(type + '-result-score').textContent = total;
+  
+  const pct = Math.round(total / 10 * 100);
+  let emoji, title, desc;
+  if (pct >= 90) { emoji='🏆'; title='Excellent!'; desc='Great job! Score: '+pct+'%'; }
+  else if (pct >= 75) { emoji='🥇'; title='Great Job!'; desc='Good performance! Score: '+pct+'%'; }
+  else if (pct >= 60) { emoji='👍'; title='Good!'; desc='Score: '+pct+'%. Keep practicing!'; }
+  else if (pct >= 40) { emoji='📖'; title='Keep Learning'; desc='Score: '+pct+'%. Review the material!'; }
+  else { emoji='💪'; title='Keep Trying!'; desc='Score: '+pct+'%. Try again!'; }
+  
+  document.getElementById(type + '-result-emoji').textContent = emoji;
+  document.getElementById(type + '-result-title').textContent = title;
+  document.getElementById(type + '-result-desc').textContent = desc;
+}
+
+function restartMiniQuiz(type) {
+  startMiniQuiz(type, 0);
+}
+
+function closeMiniQuiz(type) {
+  document.getElementById(type + '-quiz-start').style.display = 'block';
+  document.getElementById(type + '-quiz-main').style.display = 'none';
+  document.getElementById(type + '-quiz-result').style.display = 'none';
+}
+
 </script>
 
 <!-- Footer -->
@@ -1372,7 +1826,7 @@ function restartQuiz() {
         <a class="social-link" href="https://www.instagram.com/dafanesp/" aria-label="Instagram">📷 Instagram</a>
         <a class="social-link" href="https://wa.me/6282273763397" aria-label="WhatsApp" target="_blank" rel="noopener">💬 WhatsApp</a>
         <a class="social-link" href="https://github.com/Xdvn-coder" aria-label="GitHub">🐙 GitHub</a>
-        <a class="social-link" href="mailto:dafanmuhammad0@gmail.com" aria-label="Email">✉️ Email</a>
+        <a class="social-link" href="mailto:dafanmuhammd0@example.com" aria-label="Email">✉️ Email</a>
       </div>
     </div>
   </div>
